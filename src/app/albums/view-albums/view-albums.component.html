@@ -1,0 +1,22 @@
+<section class="content-with-margin">
+    <br>
+    <div *ngIf="album">
+        <div *ngFor="let user of users">
+            <span *ngIf="album.userId === user.id">
+                <h1 class="mat-h1">Album "{{album.title}}" by {{user.name}}</h1>
+            </span>
+        </div>
+    </div>
+    <h3 class="mat-h2">Images</h3>
+    <mat-card class="photo-card" *ngFor="let photo of photos">
+        <a class="no-decoration" href={{photo.url}}>
+            <img mat-card-image src={{photo.thumbnailUrl}}>
+            <mat-card-content class="photo-card-title">
+                {{(photo.title.length > 50)? (photo.title | slice:0:50) + '...':(photo.title)}}
+            </mat-card-content>
+        </a>
+    </mat-card>
+    <div class="end-float"></div>
+    <button mat-raised-button color="primary" (click)="goBack()">Back</button>
+    <br><br>
+</section>

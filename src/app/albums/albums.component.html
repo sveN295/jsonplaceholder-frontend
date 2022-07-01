@@ -1,0 +1,43 @@
+<section class="content-with-margin">
+    <br>
+    <h1>Albums</h1>
+    <div class="five-albums">
+    <a *ngFor="let album of visibleAlbums; let indexOf = index" class="album" href="/albums/{{album.id}}">
+        <!-- Workaround to get a Username from a UserID -->
+        <div *ngFor="let user of users">
+            <mat-card class="album-card" *ngIf="album.userId === user.id">
+                <mat-card-title-group>
+                    <mat-card-title>
+                        {{(album.title.length > 15)? (album.title | slice:0:15) + '...':(album.title)}}
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <p>
+                            By {{user.name}}
+                        </p>
+                    </mat-card-subtitle>
+                </mat-card-title-group>
+                <mat-card-content>
+                    <div id="albumbox">
+                        <div id="imgcontainer">
+                            <img class="centered" src={{photos[indexOf].thumbnailUrl}}>
+                            <img class="centered" src={{photos[indexOf+1].thumbnailUrl}}>
+                            <img class="centered" src={{photos[indexOf+2].thumbnailUrl}}>
+                            <img class="centered" src={{photos[indexOf+3].thumbnailUrl}}>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </a>
+    </div>
+    <div class="end-float"></div>
+    <!-- Pagination -->
+    <button mat-raised-button *ngIf="pageIndex; else previousElseBlock" (click)="previousPage()">Previous</button>&nbsp;
+    <ng-template #previousElseBlock>
+        <button mat-button disabled>Previous</button>
+    </ng-template>
+    <button mat-raised-button *ngIf="pageIndex < (albums.length / 10); else nextElseBlock" (click)="nextPage()">Next</button>&nbsp;
+    <ng-template #nextElseBlock>
+        <button mat-button disabled>Next</button>
+    </ng-template>
+</section>

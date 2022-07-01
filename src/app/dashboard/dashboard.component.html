@@ -1,0 +1,76 @@
+<main>
+    <div>
+        <br>
+        <h1 class="mat-h1">Disclaimer</h1>
+        <strong>This is an Angular learning exercise. The goal was to visualize JSONPlaceholder's fake API using the available routes and to style the result with Angular Material.</strong>
+        <br><br>
+        <a class="no-decoration" href="https://jsonplaceholder.typicode.com/">
+            <button mat-button color="primary">Visit JSONPlaceholder</button>
+        </a>
+    </div>
+    <br>
+    <mat-tab-group>
+        <!-- Top Posts Tab -->
+        <mat-tab label="Top Posts">
+            <br>
+            <div *ngFor="let post of posts">
+                <a class="no-decoration" routerLink="/posts/{{post.id}}">
+                    <mat-card class="post-card">
+                        <mat-card-title-group>
+                            <mat-card-title>{{(post.title.length > 25)? (post.title | slice:0:25) + '...':(post.title)}}</mat-card-title>
+                            <mat-icon color="primary" class="user-icon">account_circle</mat-icon>
+                        </mat-card-title-group>
+                        <br>
+                        <mat-card-content>
+                            <div class="card-content">{{post.body}}</div>
+                        </mat-card-content>
+                    </mat-card>
+                </a>
+            </div>
+            <div class="end-float"></div>
+            <button mat-raised-button color="primary" routerLink="/posts/">All Posts</button>
+        </mat-tab>
+        <!-- Top Users Tab -->
+        <mat-tab label="Top Users">
+            <mat-selection-list [multiple]="false">
+                <a class="no-decoration" *ngFor="let user of users" routerLink="/users/{{user.id}}">
+                    <mat-list-option>
+                            <mat-icon mat-list-icon color="primary">account_circle</mat-icon>
+                            <div mat-line>{{user.name}}</div>
+                            <mat-divider></mat-divider>
+                    </mat-list-option>
+                </a>
+            </mat-selection-list>
+            <br>
+            <button mat-raised-button color="primary" routerLink="/users/">All Users</button>                
+        </mat-tab>
+        <!-- Top Albums Tab -->
+        <mat-tab label="Top Albums">
+            <br>
+            <div class="five-albums">
+                <a *ngFor="let album of albums; let indexOf = index" class="album" href="/albums/{{album.id}}">
+                    <mat-card class="album-card">
+                        <mat-card-title-group>
+                            <mat-card-title>{{(album.title.length > 15)? (album.title | slice:0:15) + '...':(album.title)}}</mat-card-title>
+                            <mat-card-subtitle *ngFor="let user of users">
+                                <div *ngIf="album.userId === user.id">By {{user.name}}</div>
+                            </mat-card-subtitle>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <div id="albumbox">
+                                <div id="imgcontainer">
+                                    <img class="centered" src={{photos[indexOf].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+1].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+2].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+3].thumbnailUrl}}>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </a>
+            </div>
+            <div class="end-float"></div>
+            <button mat-raised-button color="primary" routerLink="/albums/">All Albums</button>
+        </mat-tab>
+    </mat-tab-group>
+</main>

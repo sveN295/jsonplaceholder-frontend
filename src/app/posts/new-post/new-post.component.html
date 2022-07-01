@@ -1,0 +1,26 @@
+<section class="content-with-margin">
+    <br>
+    <h1 class="mat-h1">New Post</h1>
+    <form>
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Author</mat-label>
+            <mat-select name="author" [(ngModel)]="username">
+                <mat-option *ngFor="let user of users"
+                    [value]="user.name"
+                    [attr.selected]="user.name">
+                    {{user.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field><br>
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Title</mat-label>
+            <textarea matInput [(ngModel)]="post.title" type="text" name="title">{{post.title}}</textarea>
+        </mat-form-field><br>
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Body</mat-label>
+            <textarea matInput [(ngModel)]="post.body" type="text" name="body" rows="10">{{post.body}}</textarea>
+        </mat-form-field><br>
+        <button mat-raised-button color="primary" (click)="save()">Save</button>&nbsp;
+        <button mat-raised-button color="primary" (click)="goBack()">Cancel</button>
+    </form>
+</section>

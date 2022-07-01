@@ -1,0 +1,60 @@
+<section class="content-with-margin">
+    <br>
+    <h1>Posts</h1>
+    <mat-button-toggle-group #group="matButtonToggleGroup" value="card-view">
+        <mat-button-toggle value="card-view"><mat-icon>dashboard</mat-icon></mat-button-toggle>
+        <mat-button-toggle value="list-view"><mat-icon>list</mat-icon></mat-button-toggle>
+    </mat-button-toggle-group><br>
+<!--     Card View -->
+    <div *ngIf="group.value != 'list-view'">
+        <br>
+        <mat-card *ngFor="let post of visiblePosts; let indexOf = index" class="post-card">
+            <mat-card-title-group>
+                <mat-card-title>{{(post.title.length > 25)? (post.title | slice:0:25) + '...':(post.title)}}</mat-card-title>
+                <mat-icon color="primary" class="user-icon">account_circle</mat-icon>
+            </mat-card-title-group>
+            <mat-card-content>
+                <br>
+                <div class="card-content">{{post.body}}</div>
+            </mat-card-content>
+            <mat-divider [inset]="true"></mat-divider>
+            <mat-card-actions>
+                <button mat-button routerLink="/posts/{{post.id}}">View</button>&nbsp;
+                <button mat-button routerLink="/posts/edit/{{post.id}}">Edit</button>&nbsp;
+                <button mat-button (click)="delete(indexOf)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+<!--     List View -->
+    <div *ngIf="group.value == 'list-view'">
+        <mat-selection-list [multiple]="false">
+            <mat-list-option *ngFor="let post of visiblePosts; let indexOf = index">
+                    <mat-icon mat-list-icon color="primary">account_circle</mat-icon>
+                    <div mat-line>
+                        <table>
+                            <tr>
+                                <td class="table-title-column">{{(post.title.length > 100)? (post.title | slice:0:100) + '...':(post.title)}}</td>
+                                <td>                            
+                                    <button mat-button routerLink="/posts/{{post.id}}">View</button>
+                                    <button mat-button routerLink="/posts/edit/{{post.id}}">Edit</button>
+                                    <button mat-button (click)="delete(indexOf)">Delete</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <mat-divider></mat-divider>
+            </mat-list-option>
+        </mat-selection-list>
+        <br>
+    </div>
+    <div class="end-float"></div>
+    <button mat-raised-button color="primary" routerLink="/new-post">New Post</button>&nbsp;
+    <button mat-raised-button *ngIf="pageIndex; else previousElseBlock" (click)="previousPage()">Previous</button>&nbsp;
+    <button mat-raised-button *ngIf="pageIndex < (posts.length / 10); else nextElseBlock" (click)="nextPage()">Next</button>&nbsp;
+    <ng-template #previousElseBlock>
+        <button mat-button disabled>Previous</button>
+    </ng-template>
+    <ng-template #nextElseBlock>
+        <button mat-button disabled>Next</button>
+    </ng-template>
+</section>

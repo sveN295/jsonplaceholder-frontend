@@ -1,0 +1,130 @@
+<section class="content-with-margin">
+    <br>
+    <div *ngIf="user">
+        <h1 class="mat-h1">User Profile</h1>
+        <h2 class="mat-h2">{{user.username}} ({{user.name}})</h2>
+        <br>
+        <mat-divider></mat-divider>
+        <br>
+        <!-- Adress Card -->
+        <mat-card class="user-card">
+            <mat-card-title-group>
+                <mat-card-title>
+                    Adress
+                </mat-card-title>
+                <mat-icon color="primary" class="user-icon">person_pin_circle</mat-icon>
+            </mat-card-title-group>
+            <mat-card-content>
+                <br>
+                <div>{{user.address.street}} {{user.address.suite}}</div><br>
+                <div>{{user.address.zipcode}} {{user.address.city}}</div><br>
+                <div>Latitude {{user.address.geo.lat}} Longitude {{user.address.geo.lng}}</div>
+            </mat-card-content>
+        </mat-card>
+        <!-- Contact Card -->
+        <mat-card class="user-card">
+            <mat-card-title-group>
+                <mat-card-title>
+                    Contact
+                </mat-card-title>
+                <mat-icon color="primary" class="user-icon">call</mat-icon>
+            </mat-card-title-group>
+            <mat-card-content>
+                <br>
+                <mat-icon color="primary">call</mat-icon>
+                <span class="aligned-with-icon">
+                    Phone: {{user.phone}}
+                </span><br>
+                <mat-icon color="primary">mail</mat-icon>
+                <span class="aligned-with-icon">E-Mail: 
+                    {{user.email}}
+                </span><br>
+                <mat-icon color="primary">link</mat-icon>
+                <span class="aligned-with-icon">
+                    Website: {{user.website}}
+                </span>
+            </mat-card-content>
+        </mat-card>
+        <!-- Company Card -->
+        <mat-card class="user-card">
+            <mat-card-title-group>
+                <mat-card-title>
+                    Company
+                </mat-card-title>
+                <mat-icon color="primary" class="user-icon">store</mat-icon>
+            </mat-card-title-group>
+            <mat-card-content>
+                <br>
+                <div><strong>{{user.company.name}}</strong></div><br>
+                <div>{{user.company.catchPhrase}}</div><br>
+                <div>{{user.company.bs}}</div>
+            </mat-card-content>
+        </mat-card>
+        <!-- User Tabs -->
+        <mat-tab-group mat-align-tabs="start" class="user-tabs">
+            <!-- To Dos -->
+            <mat-tab label="To Dos">
+                <br>
+                <h3>To Dos</h3>
+                <mat-selection-list class="user-todo-list">
+                    <div *ngFor="let todo of todos">
+                        <mat-list-option *ngIf="todo.completed; else elseBlock" selected="true" color="primary">
+                            {{todo.title}}
+                        </mat-list-option>
+                        <ng-template #elseBlock>
+                            <mat-list-option selected="false" color="primary">
+                                {{todo.title}}
+                            </mat-list-option>
+                        </ng-template>
+                    </div>
+                </mat-selection-list>
+            </mat-tab>
+            <!-- Posts -->
+            <mat-tab label="Posts">
+                <br>
+                <div *ngFor="let post of posts; let indexOf = index" >
+                    <mat-card class="post-card" *ngIf="post.userId == user.id">
+                        <mat-card-title-group>
+                            <mat-card-title>
+                                {{(post.title.length > 25)? (post.title | slice:0:25) + '...':(post.title)}}
+                            </mat-card-title>
+                            <mat-icon color="primary" class="user-icon">account_circle</mat-icon>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <br>
+                            <div class="card-content">{{post.body}}</div>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button routerLink="/posts/{{post.id}}">View</button>&nbsp;
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </mat-tab>            
+            <!-- Albums -->
+            <mat-tab label="Albums">
+                <br>
+                <a *ngFor="let album of albums; let indexOf = index" class="album" href="/albums/{{album.id}}">
+                    <mat-card class="album-card">
+                        <mat-card-title-group>
+                            <mat-card-title>
+                                {{(album.title.length > 15)? (album.title | slice:0:15) + '...':(album.title)}}
+                            </mat-card-title>
+                        </mat-card-title-group>
+                        <mat-card-content>
+                            <div id="albumbox">
+                                <div id="imgcontainer">
+                                    <img class="centered" src={{photos[indexOf].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+1].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+2].thumbnailUrl}}>
+                                    <img class="centered" src={{photos[indexOf+3].thumbnailUrl}}>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </a>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <br>
+</section>
+<button mat-raised-button color="primary" (click)="goBack()">Back</button>

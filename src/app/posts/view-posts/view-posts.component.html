@@ -1,0 +1,42 @@
+<section class="content-with-margin">
+    <br>
+    <div *ngIf="post">
+        <h1>{{post.title}}</h1>
+        <div *ngFor="let user of users">
+            <span *ngIf="post.userId === user.id"><strong>By {{user.name}}</strong></span>
+        </div>
+        <br>
+        <!-- To make the post look a bit longer we append the post.body multiple times -->
+        <div class="mat-body-1">
+            <p>{{post.body}} {{post.body}} {{post.body}} {{post.body}} {{post.body}}</p><p>{{post.body}} {{post.body}} {{post.body}}</p>
+        </div>
+        <br>
+        <div>
+            <mat-icon matBadge="{{comments.length}}" matBadgeColor="warn">comment</mat-icon>
+            <span class="mat-h3"><strong>&nbsp;&nbsp;&nbsp;Comments</strong></span>
+        </div>
+        <br>
+        <div *ngFor="let comment of comments">
+            <mat-divider></mat-divider>
+            <br>
+            <table>
+                <tr>
+                    <td><mat-icon>account_circle</mat-icon>&nbsp;</td>
+                    <td><strong>{{comment.email}}</strong></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>{{comment.body}}</td>
+                </tr>
+                <br>
+            </table>
+        </div>
+        <mat-divider></mat-divider>
+        <br>
+    </div>
+    <button mat-raised-button color="primary" (click)="goBack()">Back</button>
+</section>

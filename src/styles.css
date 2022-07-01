@@ -1,0 +1,140 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css"; 
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: #f4f4f4 }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+main {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+section.content-with-margin {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.end-float {
+    clear: both;
+}
+
+/* Albums */
+#albumbox {
+    width: 250px;
+    max-width: 250px;
+    height: 250px;
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.album-card {
+    max-width: 400px;
+    height: 300px;
+    max-height: 300px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+img.centered {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 5px;
+    height: 46%;
+    width: 46%;
+}
+
+.photo-card {
+    width: 200px;
+    max-width: 200px;
+    height: 275px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+  }
+
+.photo-card-title {
+    height: 50px;
+    max-height: 50px;
+}
+
+.five-albums {
+    max-width: 1500px;
+}
+
+/* Posts */
+.post-card {
+    max-width: 400px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.card-content {
+    min-height: 80px;
+}
+
+.aligned-with-icon {
+    position: absolute;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.edit-post-form-textarea {
+    padding-bottom: 10px;
+}
+
+.form-field {
+    width: 500px;
+}
+
+/* Lists */
+a.no-decoration {
+    text-decoration: none;
+    color: black;
+}
+
+.user-icon {
+    transform: scale(2);
+}
+.list-post-title {
+    min-width: 500px;
+    width: 500px;
+}
+
+.table-title-column {
+    width: 600px;
+}
+
+/* Users */
+
+.user-todo-list {
+    max-width: 500px;
+}
+
+.user-card {
+    width: 400px;
+    height: 150px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.user-tabs {
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

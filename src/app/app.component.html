@@ -1,0 +1,32 @@
+<header>
+    <nav>
+        <mat-toolbar color="primary">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/dashboard">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+                <button mat-menu-item routerLink="/posts">
+                <mat-icon>rate_review</mat-icon>
+                <span>Posts</span>
+                </button>
+                <button mat-menu-item routerLink="/users">
+                <mat-icon>groups</mat-icon>
+                <span>Users</span>
+                </button>
+                <button mat-menu-item routerLink="/albums">
+                <mat-icon>perm_media</mat-icon>
+                <span>Albums</span>
+                </button>
+            </mat-menu>
+            <span>{{title}}</span>
+        </mat-toolbar>
+    </nav>
+</header>
+<main>
+    <router-outlet></router-outlet>
+</main>
+<footer></footer>

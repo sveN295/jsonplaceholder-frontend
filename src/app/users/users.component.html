@@ -1,0 +1,13 @@
+<section class="content-with-margin">
+    <br>
+    <h1 class="mat-h1">Users</h1>
+    <mat-selection-list [multiple]="false">
+        <a class="no-decoration" *ngFor="let user of users" routerLink="/users/{{user.id}}">
+            <mat-list-option>
+                    <mat-icon mat-list-icon color="primary">account_circle</mat-icon>
+                    <div mat-line>{{user.name}}</div>
+                    <mat-divider></mat-divider>
+            </mat-list-option>
+        </a>
+    </mat-selection-list>
+</section>
