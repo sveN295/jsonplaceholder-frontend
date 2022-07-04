@@ -25,6 +25,7 @@ const routes: Routes = [
     { path: 'albums/:id', component: ViewAlbumsComponent, data: { title: 'Album View' }  },
     { path: 'dashboard', component: DashboardComponent, data: { title: 'JSONPlaceholder Frontend' }  },
     { path: '', component: DashboardComponent, data: { title: 'JSONPlaceholder Frontend' }  },
+    { path: '**', component: DashboardComponent, data: { title: 'JSONPlaceholder Frontend' }  }
 ];
 
 @NgModule({

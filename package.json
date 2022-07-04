@@ -1,5 +1,6 @@
 {
   "name": "angular-cms",
+  "website": "https://sven295.github.io/jsonplaceholder-frontend/",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

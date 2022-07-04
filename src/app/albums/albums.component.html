@@ -2,7 +2,7 @@
     <br>
     <h1>Albums</h1>
     <div class="five-albums">
-    <a *ngFor="let album of visibleAlbums; let indexOf = index" class="album" href="/albums/{{album.id}}">
+    <a *ngFor="let album of visibleAlbums; let indexOf = index" class="album" routerLink="/albums/{{album.id}}">
         <!-- Workaround to get a Username from a UserID -->
         <div *ngFor="let user of users">
             <mat-card class="album-card" *ngIf="album.userId === user.id">

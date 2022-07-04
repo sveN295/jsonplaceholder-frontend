@@ -103,7 +103,7 @@
             <!-- Albums -->
             <mat-tab label="Albums">
                 <br>
-                <a *ngFor="let album of albums; let indexOf = index" class="album" href="/albums/{{album.id}}">
+                <a *ngFor="let album of albums; let indexOf = index" class="album" routerLink="/albums/{{album.id}}">
                     <mat-card class="album-card">
                         <mat-card-title-group>
                             <mat-card-title>
